@@ -29,7 +29,7 @@ class CaesarCipher(CipherStrategy):
     """
 
     @staticmethod
-    def encrypt(data: str, key: int) -> str:
+    def encrypt(data: str, key: str) -> str:
         """
         Шифрование данных алгоритмом Цезаря.
 
@@ -41,10 +41,10 @@ class CaesarCipher(CipherStrategy):
             str: Зашифрованные данные.
         """
 
-        return CaesarCipher._shift_text(data, key)
+        return CaesarCipher._shift_text(data, int(key))
 
     @staticmethod
-    def decrypt(data: str, key: int) -> str:
+    def decrypt(data: str, key: str) -> str:
         """
         Дешифрование данных алгоритмом Цезаря.
 
@@ -56,7 +56,7 @@ class CaesarCipher(CipherStrategy):
             str: Расшифрованные данные.
         """
 
-        return CaesarCipher._shift_text(data, -key)
+        return CaesarCipher._shift_text(data, -int(key))
 
     @staticmethod
     def break_cipher(data: str) -> str:

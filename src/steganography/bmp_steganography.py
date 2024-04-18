@@ -4,17 +4,19 @@ from PIL import Image
 
 class BMPSteganography(Steganography):
     """
-    Класс для реализации стеганографии в BMP изображениях.
+    Класс для стеганографии в BMP изображениях.
     """
 
     @staticmethod
-    def embed_text(image_path: str, text: str) -> str:
+    def embed_text(image_path: str, text: str, output_path: str = None) -> str:
         """
-        Метод для внедрения текста в BMP изображение.
+        Внедрение текста в BMP изображение.
 
         Args:
-            image_path (str): Путь к исходному BMP изображению.
+            image_path (str): Путь к исходному изображению.
             text (str): Текст для внедрения.
+            output_path (str, optional): Путь для сохранения изображения с внедренным текстом.
+                Если не указан, то используется путь исходного изображения с суффиксом "_stego".
 
         Returns:
             str: Путь к изображению с внедренным текстом.
@@ -51,7 +53,9 @@ class BMPSteganography(Steganography):
         output_image = Image.new(image.mode, image.size)
         output_image.putdata(modified_data)
 
-        output_path = f"{image_path.split('.')[0]}_embedded.bmp"
+        if output_path is None:
+            output_path = f"{image_path.split('.')[0]}_stego.{image_path.split('.')[-1]}"
+
         output_image.save(output_path)
 
         return output_path

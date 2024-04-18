@@ -28,7 +28,7 @@ def alphabet_index(char: str) -> int:
         int: Индекс в алфавите.
     """
 
-    return ord(char) - alphabet(char)[0]
+    return ord(char) - ord(alphabet(char)[0])
 
 
 def shift_char(char: str, key_index: int) -> str:

@@ -18,18 +18,12 @@ class VernamCipher(CipherStrategy):
 
         Returns:
             str: Зашифрованные данные.
-
-        Raises:
-            ValueError: Если передан ключ неверной длины.
         """
 
-        if len(data) != len(key):
-            raise ValueError("Длина ключа должна совпадать с длиной данных.")
+        extended_key = (key * (len(data) // len(key) + 1))[:len(data)]
+        ciphertext = ''.join(chr(ord(m) ^ ord(k)) for m, k in zip(data, extended_key))
 
-        encrypted_data = ""
-        for char, key_char in zip(data, key):
-            encrypted_data += chr(ord(char) ^ ord(key_char))
-        return encrypted_data
+        return ciphertext
 
     @staticmethod
     def decrypt(data: str, key: str) -> str:

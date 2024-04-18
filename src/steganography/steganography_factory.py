@@ -1,4 +1,5 @@
 from .bmp_steganography import BMPSteganography
+from .jpg_steganography import JPGSteganography
 
 
 class SteganographyFactory:
@@ -23,6 +24,7 @@ class SteganographyFactory:
         image_format = image_format.lower()
         if image_format == 'bmp' or image_format == 'png':
             return BMPSteganography()
+        if image_format == 'jpg':
+            return JPGSteganography()
 
-        else:
-            raise ValueError(f'Unsupported image format: {image_format}')
+        raise ValueError(f'Unsupported image format: {image_format}')

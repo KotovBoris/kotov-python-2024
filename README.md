@@ -72,17 +72,46 @@
 #### `BMPSteganography`
 
 - **Наследуется от `Steganography`.**
-- `embed_text(image_path: str, text: str) -> str`: Внедрение текста в BMP изображение.
-- `extract_text(image_path: str) -> str`: Извлечение текста из BMP изображения.
-
-#### `PNGSteganography`
-
-- **Наследуется от `Steganography`.**
-- `embed_text(image_path: str, text: str) -> str`: Внедрение текста в PNG изображение.
-- `extract_text(image_path: str) -> str`: Извлечение текста из PNG изображения.
+- `embed_text(image_path: str, text: str) -> str`: Внедрение текста в BMP/PNG изображение.
+- `extract_text(image_path: str) -> str`: Извлечение текста из BMP/PNG изображения.
 
 #### `JPGSteganography`
 
 - **Наследуется от `Steganography`.**
 - `embed_text(image_path: str, text: str) -> str`: Внедрение текста в JPG изображение.
 - `extract_text(image_path: str) -> str`: Извлечение текста из JPG изображения.
+
+# Покрытие тестами
+
+### Coverage report: 99%
+
+[coverage.py v7.4.4](https://coverage.readthedocs.io/en/7.4.4), created at 2024-04-18 04:08 +0300
+
+| Module                                                                                         | statements | missing | excluded | coverage |
+| ---------------------------------------------------------------------------------------------- | ---------- | ------- | -------- | -------- |
+| [src\__init__.py](d_145eef247bfb46b6___init___py.html)                                         | 0          | 0       | 0        | 100%     |
+| [src\cipher\__init__.py](d_4964dd438bd0ea48___init___py.html)                                  | 0          | 0       | 0        | 100%     |
+| [src\cipher\caesar_cipher.py](d_4964dd438bd0ea48_caesar_cipher_py.html)                        | 35         | 0       | 0        | 100%     |
+| [src\cipher\char_functions.py](d_4964dd438bd0ea48_char_functions_py.html)                      | 12         | 0       | 0        | 100%     |
+| [src\cipher\cipher_factory.py](d_4964dd438bd0ea48_cipher_factory_py.html)                      | 14         | 0       | 0        | 100%     |
+| [src\cipher\cipher_strategy.py](d_4964dd438bd0ea48_cipher_strategy_py.html)                    | 10         | 2       | 0        | 80%      |
+| [src\cipher\vernam_cipher.py](d_4964dd438bd0ea48_vernam_cipher_py.html)                        | 10         | 0       | 0        | 100%     |
+| [src\cipher\vigenere_cipher.py](d_4964dd438bd0ea48_vigenere_cipher_py.html)                    | 19         | 0       | 0        | 100%     |
+| [src\steganography\__init__.py](d_cfffa53b4a781d44___init___py.html)                           | 0          | 0       | 0        | 100%     |
+| [src\steganography\bmp_steganography.py](d_cfffa53b4a781d44_bmp_steganography_py.html)         | 47         | 0       | 0        | 100%     |
+| [src\steganography\jpg_steganography.py](d_cfffa53b4a781d44_jpg_steganography_py.html)         | 31         | 0       | 0        | 100%     |
+| [src\steganography\steganography.py](d_cfffa53b4a781d44_steganography_py.html)                 | 10         | 2       | 0        | 80%      |
+| [src\steganography\steganography_factory.py](d_cfffa53b4a781d44_steganography_factory_py.html) | 11         | 0       | 0        | 100%     |
+| [tests\test_bmp_steganography.py](d_a44f0ac069e85531_test_bmp_steganography_py.html)           | 26         | 0       | 0        | 100%     |
+| [tests\test_caesar_cipher.py](d_a44f0ac069e85531_test_caesar_cipher_py.html)                   | 55         | 0       | 0        | 100%     |
+| [tests\test_char_functions.py](d_a44f0ac069e85531_test_char_functions_py.html)                 | 35         | 0       | 0        | 100%     |
+| [tests\test_cipher_factory.py](d_a44f0ac069e85531_test_cipher_factory_py.html)                 | 18         | 0       | 0        | 100%     |
+| [tests\test_jpg_steganography.py](d_a44f0ac069e85531_test_jpg_steganography_py.html)           | 22         | 0       | 0        | 100%     |
+| [tests\test_steganography_factory.py](d_a44f0ac069e85531_test_steganography_factory_py.html)   | 18         | 0       | 0        | 100%     |
+| [tests\test_vernam_cipher.py](d_a44f0ac069e85531_test_vernam_cipher_py.html)                   | 28         | 0       | 0        | 100%     |
+| [tests\test_vigenere_cipher.py](d_a44f0ac069e85531_test_vigenere_cipher_py.html)               | 26         | 0       | 0        | 100%     |
+| Total                                                                                          | 427        | 4       | 0        | 99%      |
+
+[coverage.py v7.4.4](https://coverage.readthedocs.io/en/7.4.4), created at 2024-04-18 04:08 +0300
+
+(в steganography.py и cipher_strategy.py по 80%, т.к. это абстрактные классы с pass-ами)

@@ -48,7 +48,13 @@ class VigenereCipher(CipherStrategy):
 
         Returns:
             str: Преобразованный текст.
+
+        Raises:
+            ValueError: Пустой ключ.
         """
+        if len(key) == 0:
+            raise ValueError("Empty key")
+
         translated = []
 
         for i in range(len(data)):
