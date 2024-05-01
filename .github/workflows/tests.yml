@@ -22,7 +22,7 @@ jobs:
           coverage json
       - name: Generate and update coverage badge
         run: |
-          pip install genbadge
+          pip install genbadge[coverage]
           genbadge coverage -i coverage.json -o coverage.svg
       - name: Commit and push coverage badge
         run: |
