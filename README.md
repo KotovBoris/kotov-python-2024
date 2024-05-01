@@ -1,4 +1,4 @@
-[![cov](https://KotovBoris.github.io/kotov-python-2024/badges/coverage.svg)](https://github.com/KotovBoris/kotov-python-2024/actions)
+![Coverage](./coverage.svg)
 
 # Описание проекта:
 
