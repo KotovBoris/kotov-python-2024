@@ -21,8 +21,6 @@ jobs:
           coverage run -m unittest discover -s tests
           coverage report -m
       - name: Generate JSON coverage report
-        run: coverage json -o reports/coverage.json
+        run: coverage json -o ./coverage/coverage-summary.json
       - name: Update Coverage Badge
         uses: we-cli/coverage-badge-action@main
-        with:
-          coverage_file: reports/coverage.json
