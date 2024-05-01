@@ -19,11 +19,11 @@ jobs:
       - name: Run tests and generate coverage report
         run: |
           coverage run -m unittest discover -s tests
-          coverage json
+          coverage xml
       - name: Generate and update coverage badge
         run: |
           pip install genbadge[coverage]
-          genbadge coverage -i coverage.json -o coverage.svg
+          genbadge coverage -i coverage.xml -o coverage.svg
       - name: Commit and push coverage badge
         run: |
           git config --local user.email "action@github.com"
