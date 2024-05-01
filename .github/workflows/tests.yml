@@ -19,6 +19,15 @@ jobs:
       - name: Run tests and generate coverage report
         run: |
           coverage run -m unittest discover -s tests
-          coverage json -o ./coverage/coverage.json
-      - name: Update Coverage Badge
-        uses: we-cli/coverage-badge-action@main
+          coverage json
+      - name: Generate and update coverage badge
+        run: |
+          pip install genbadge
+          genbadge coverage -i coverage.json -o coverage.svg
+      - name: Commit and push coverage badge
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add coverage.svg
+          git commit -m "Update coverage badge" || echo "No changes to coverage badge"
+          git push
