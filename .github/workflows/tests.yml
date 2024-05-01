@@ -15,19 +15,18 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install coverage
-      - name: Run tests and generate coverage report
+          pip install coverage coverage-badge
+      - name: Run tests with coverage
         run: |
-          coverage run -m unittest discover -s tests
-          coverage xml
-      - name: Generate and update coverage badge
+          python -m coverage run --source=my_module -m unittest discover -s tests
+      - name: Generate coverage report
         run: |
-          pip install genbadge[coverage]
-          genbadge coverage -i coverage.xml -o coverage.svg
-      - name: Commit and push coverage badge
+          python -m coverage report
+      - name: Generate coverage badge
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add coverage.svg
-          git commit -m "Update coverage badge" || echo "No changes to coverage badge"
-          git push origin HEAD:refs/heads/${{ github.head_ref }}
+          python -m coverage-badge -o coverage.svg
+      - name: Upload coverage badge
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-badge
+          path: coverage.svg
